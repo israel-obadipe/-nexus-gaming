@@ -512,3 +512,20 @@
     )
   )
 )
+
+(define-private (can-level-up
+    (current-experience uint)
+    (gained-experience uint)
+    (current-level uint)
+  )
+  (let
+    (
+      (new-total-experience (+ current-experience gained-experience))
+      (required-experience (calculate-level-up-experience current-level))
+    )
+    (>= new-total-experience required-experience)
+  )
+)
+
+;; Initialize Protocol
+(map-set protocol-admin-whitelist tx-sender true)
